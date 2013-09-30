@@ -1,2 +1,4 @@
 // Init angular
-var app = angular.module('index', []);
+var app = angular.module('chat', [
+    'SocketService'
+]);

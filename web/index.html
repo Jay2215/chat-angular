@@ -20,15 +20,27 @@
         </div>
 
         <div class="container" ng-controller="ChatController" style="margin-top: 50px;">
-            <form>
+            <fieldset ng-if="!pseudo">
+                <legend>Choose your pseudo : </legend>
+                <form ng-submit="createUser(pseudo)">
+                    <input type="text" ng-model="pseudo" placeholder="Pseudo"/>
+                    <input type="submit" id="submit" value="Submit" />
+                </form>
+                <p ng-bind="error"></p>
+            </fieldset>
 
+            <ul>
+                <li ng-repeat="message in messages">
+                    {{ message.date }}
+                </li>
+            </ul>
 
-            </form>
         </div>
+
         <script type="text/javascript">
             var host = 'http://localhost:7777';
         </script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
         <script type="text/javascript" src="http://localhost:7777/socket.io/socket.io.js"></script>
         <script type="text/javascript" src="js/services/SocketService.js"></script>
         <script type="text/javascript" src="js/app.js"></script>

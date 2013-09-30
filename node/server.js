@@ -1,5 +1,7 @@
-// Init socket IO, listen on port 7777
-var io = require('socket.io').listen(7777);
+var express = require('express');
+var app     = express();
+var server  = require('http').createServer(app).listen(7777);
+var io      = require('socket.io').listen(server);
 
 /**
  * On connection, when a user is connected
@@ -24,7 +26,10 @@ io.sockets.on('connection', function(socket) {
         console.log('New message send');
 
         // Send the message to all connected user
-        socket.broadcast.emit('receiveMessage', data);
+        io.sockets.emit('receiveMessage', data);
+    });
+
+    socket.on('disconnect', function() {
+
     });
 });
-

@@ -55,7 +55,6 @@ app.controller('ChatController', function($scope, socket)
                 user    : $scope.pseudo,
                 date    : new Date().toLocaleString()
             };
-            $scope.messages.push(msg);
             socket.emit('sendMessage', msg)
         }
     };

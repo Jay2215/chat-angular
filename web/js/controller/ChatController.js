@@ -34,13 +34,43 @@ app.controller('ChatController', function($scope, socket)
      *
      * @param string field
      */
-    $scope.createUser = function (field)
+    $scope.createUser = function (data)
     {
-        if (field) {
-              $scope.pseudo = field;
+        if (data) {
+              $scope.pseudo = data;
               socket.emit('joinChat', $scope.pseudo);
         } else {
             $scope.error = 'You must choose your pseudo.';
         }
     }
+
+    /**
+     * When a user send an message
+     */
+    $scope.submitMessage = function(data)
+    {
+        if (data) {
+            var msg = {
+                message : data,
+                user    : $scope.pseudo,
+                date    : new Date().toLocaleString()
+            };
+            $scope.messages.push(msg);
+            socket.emit('sendMessage', msg)
+        }
+    };
+
+    /**
+     * When a new user is connected
+     */
+    socket.on('newUser', function (data) {
+        // TODO : display notification box
+    });
+
+    /**
+     * Store data to display to all user
+     */
+    socket.on('receiveMessage', function (data) {
+        $scope.messages.push(data);
+    });
 });

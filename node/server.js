@@ -12,7 +12,19 @@ io.sockets.on('connection', function(socket) {
      * When a user join the chat room
      */
     socket.on('joinChat', function(data) {
-        console.log(data);
+
+        // Send to all user the new user
+        socket.broadcast.emit('newUser', data);
+    });
+
+    /**
+     * When a user send a message
+     */
+    socket.on('sendMessage', function (data) {
+        console.log('New message send');
+
+        // Send the message to all connected user
+        socket.broadcast.emit('receiveMessage', data);
     });
 });
 

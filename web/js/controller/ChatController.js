@@ -18,10 +18,10 @@ app.controller('ChatController', function($scope, socket)
     ];
 
     /**
-     * User's pseudo
-     * @type string
+     * User's object
+     * @type object
      */
-    $scope.pseudo = '';
+    $scope.user = {};
 
     /**
      * Display error
@@ -34,13 +34,13 @@ app.controller('ChatController', function($scope, socket)
      *
      * @param string field
      */
-    $scope.createUser = function (data)
+    $scope.createUser = function ()
     {
-        if (data) {
-              $scope.pseudo = data;
-              socket.emit('joinChat', $scope.pseudo);
+        if ($scope.user.pseudo && $scope.user.email) {
+            $scope.user.id = $scope.user.email.replace('@', '-').replace('.', '-');
+            socket.emit('joinChat', $scope.user);
         } else {
-            $scope.error = 'You must choose your pseudo.';
+            $scope.error = 'You must choose your pseudo and email.';
         }
     }
 
@@ -55,7 +55,9 @@ app.controller('ChatController', function($scope, socket)
                 user    : $scope.pseudo,
                 date    : new Date().toLocaleString()
             };
-            socket.emit('sendMessage', msg)
+            socket.emit('sendMessage', {
+                message : data
+            })
         }
     };
 

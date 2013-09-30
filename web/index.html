@@ -23,7 +23,8 @@
             <fieldset ng-if="!pseudo">
                 <legend>Choose your pseudo : </legend>
                 <form ng-submit="createUser(pseudo)">
-                    <input type="text" ng-model="pseudo" placeholder="Pseudo"/>
+                    <input type="text" ng-model="user.pseudo" placeholder="Pseudo"/>
+                    <input type="text" ng-model="user.email" placeholder="Email"/>
                     <input type="submit" id="submit" value="Submit" />
                 </form>
                 <p ng-bind="error"></p>

@@ -10,13 +10,21 @@ var io      = require('socket.io').listen(server);
  */
 io.sockets.on('connection', function(socket) {
 
+    var users       = [];
+    var currentUser = null;
+
     /**
      * When a user join the chat room
      */
-    socket.on('joinChat', function(data) {
+    socket.on('joinChat', function(user) {
+        // Store current user
+        currentUser = user;
+
+        // Store users in array
+        users[currentUser.id] = currentUser;
 
         // Send to all user the new user
-        socket.broadcast.emit('newUser', data);
+        socket.broadcast.emit('newUser', user);
     });
 
     /**
@@ -29,7 +37,12 @@ io.sockets.on('connection', function(socket) {
         io.sockets.emit('receiveMessage', data);
     });
 
-    socket.on('disconnect', function() {
-
+    /**
+     * When a user leave the chat
+     */
+    socket.on('leaveChat', function() {
+        if (currentUser !== null) {
+            users.remove(currentUser.id);
+        }
     });
 });

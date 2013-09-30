@@ -1,4 +1,4 @@
 ChatAngularJS
 =============
 
-Chat with node JS and angularJS
+Chat with node.js and angularJS

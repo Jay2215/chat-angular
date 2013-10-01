@@ -1,7 +1,8 @@
 var express = require('express');
 var app     = express();
-var server  = require('http').createServer(app).listen(7777);
+var server  = require('http').createServer(app).listen(8080);
 var io      = require('socket.io').listen(server);
+var md5     = require('MD5');
 
 /**
  * On connection, when a user is connected
@@ -10,7 +11,16 @@ var io      = require('socket.io').listen(server);
  */
 io.sockets.on('connection', function(socket) {
 
+    /**
+     * Array which contain all connected user
+     * @type {Array}
+     */
     var users       = [];
+
+    /**
+     * Current connected user. One socket by user
+     * @type {null}
+     */
     var currentUser = null;
 
     /**

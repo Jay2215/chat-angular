@@ -17,6 +17,8 @@ app.controller('ChatController', function($scope, socket)
         }
     ];
 
+    $scope.users = [{name : 'test'},{name : 'test 1'},{name : 'test 2'},{name : 'test 4'},{name : 'Mathieu'}];
+
     /**
      * User's object
      * @type object
@@ -30,6 +32,12 @@ app.controller('ChatController', function($scope, socket)
     $scope.error = '';
 
     /**
+     *
+     * @type {boolean}
+     */
+    $scope.isConnected = false;
+
+    /**
      * Create a user on login form
      *
      * @param string field
@@ -39,6 +47,7 @@ app.controller('ChatController', function($scope, socket)
         if ($scope.user.pseudo && $scope.user.email) {
             $scope.user.id = $scope.user.email.replace('@', '-').replace('.', '-');
             socket.emit('joinChat', $scope.user);
+            $scope.isConnected = true;
         } else {
             $scope.error = 'You must choose your pseudo and email.';
         }
@@ -50,14 +59,10 @@ app.controller('ChatController', function($scope, socket)
     $scope.submitMessage = function(data)
     {
         if (data) {
-            var msg = {
-                message : data,
-                user    : $scope.pseudo,
-                date    : new Date().toLocaleString()
-            };
+            $("#message").val('');
             socket.emit('sendMessage', {
                 message : data
-            })
+            });
         }
     };
 
@@ -65,6 +70,7 @@ app.controller('ChatController', function($scope, socket)
      * When a new user is connected
      */
     socket.on('newUser', function (data) {
+        alert("nex user");
         // TODO : display notification box
     });
 

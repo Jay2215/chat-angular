@@ -1,0 +1,64 @@
+$color      : #fff;
+$background : #3b5998;
+$border     : #133783;
+
+.error {color:red;}
+.marT50{margin-top: 50px}
+body {
+  color:$color;
+  font-family: verdana, arial;
+}
+
+header {
+    line-height: 45px;
+    background: $background;
+    width: 100%;
+    div {
+        width: 960px;
+        margin:0 auto;
+    }
+}
+#login-form {
+    width: 960px;
+    margin:0 auto;
+    form {
+
+    }
+}
+
+#lst-user {
+    position: absolute;
+    right: 0;
+    top : 0px;
+    height: 100%;
+    background: #fff;
+    border-left: 1px solid $border;
+    border-right: 1px solid $border;
+    width: 200px;
+    list-style: none;
+    ul {
+        margin:0;
+        list-style: none;
+        li {
+            box-sizing: border-box;
+            padding:0 0 0 10px;
+            color:$background;
+            line-height: 30px;
+            width: 100%;
+            border-bottom: 1px solid $border;
+            cursor: pointer;
+            &:hover {
+                color: $color;
+                background: $background;
+            }
+        }
+    }
+    #search {
+        position: absolute;
+        bottom: 0;
+        input {
+            width: 100%;
+            margin:0;
+        }
+    }
+}

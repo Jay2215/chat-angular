@@ -1,0 +1,52 @@
+.error {
+  color: red; }
+
+.marT50 {
+  margin-top: 50px; }
+
+body {
+  color: white;
+  font-family: verdana, arial; }
+
+header {
+  line-height: 45px;
+  background: #3b5998;
+  width: 100%; }
+  header div {
+    width: 960px;
+    margin: 0 auto; }
+
+#login-form {
+  width: 960px;
+  margin: 0 auto; }
+
+#lst-user {
+  position: absolute;
+  right: 0;
+  top: 0px;
+  height: 100%;
+  background: #fff;
+  border-left: 1px solid #133783;
+  border-right: 1px solid #133783;
+  width: 200px;
+  list-style: none; }
+  #lst-user ul {
+    margin: 0;
+    list-style: none; }
+    #lst-user ul li {
+      box-sizing: border-box;
+      padding: 0 0 0 10px;
+      color: #3b5998;
+      line-height: 30px;
+      width: 100%;
+      border-bottom: 1px solid #133783;
+      cursor: pointer; }
+      #lst-user ul li:hover {
+        color: white;
+        background: #3b5998; }
+  #lst-user #search {
+    position: absolute;
+    bottom: 0; }
+    #lst-user #search input {
+      width: 100%;
+      margin: 0; }

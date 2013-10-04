@@ -1,0 +1,9 @@
+<div class="span4 offset4 well marT50">
+    <legend>Login</legend>
+    <form  ng-submit="createUser()">
+        <input type="text" class="span4" ng-model="user.pseudo" placeholder="Pseudo" />
+        <input type="text" class="span4" ng-model="user.email" placeholder="Email" required="email" />
+        <button type="submit" name="submit" class="btn btn-info btn-block">Connexion</button>
+    </form>
+    <p ng-bind="error" class="error"></p>
+</div>

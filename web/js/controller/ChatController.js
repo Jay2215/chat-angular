@@ -17,7 +17,7 @@ app.controller('ChatController', function($scope, socket)
         }
     ];
 
-    $scope.users = [{name : 'test'},{name : 'test 1'},{name : 'test 2'},{name : 'test 4'},{name : 'Mathieu'}];
+    $scope.users = [];
 
     /**
      * User's object
@@ -69,9 +69,17 @@ app.controller('ChatController', function($scope, socket)
     /**
      * When a new user is connected
      */
-    socket.on('newUser', function (data) {
-        alert("nex user");
-        // TODO : display notification box
+    socket.on('newUser', function (user) {
+        // Add new user to scope
+        $scope.users.push(user);
+    });
+
+    /**
+     * When a user leave chat
+     */
+    socket.on('leaveChat', function (user) {
+        // Remove user from scope
+        $scope.users.splice(user.id, 1);
     });
 
     /**

@@ -28,13 +28,14 @@ header {
 
 #lst-user {
     position: absolute;
-    right: 0;
-    top : 0px;
+    left: 0;
+    top : 45px;
     height: 100%;
     background: #fff;
     border-left: 1px solid $border;
     border-right: 1px solid $border;
-    width: 200px;
+    width: 10%;
+    overflow-x: auto;
     list-style: none;
     ul {
         margin:0;
@@ -54,11 +55,30 @@ header {
         }
     }
     #search {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         input {
             width: 100%;
             margin:0;
+        }
+    }
+}
+
+#lst-messages {
+    color:#000;
+    position: absolute;
+    left: 10%;
+    width: 90%;
+    overflow: auto;
+    ul {
+        list-style: none;
+        margin: 0;
+        li {
+            background: #ccc;
+            margin-top:5px;
+            &:first-child {
+                margin-top:0px;
+            }
         }
     }
 }

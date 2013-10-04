@@ -22,13 +22,14 @@ header {
 
 #lst-user {
   position: absolute;
-  right: 0;
-  top: 0px;
+  left: 0;
+  top: 45px;
   height: 100%;
   background: #fff;
   border-left: 1px solid #133783;
   border-right: 1px solid #133783;
-  width: 200px;
+  width: 10%;
+  overflow-x: auto;
   list-style: none; }
   #lst-user ul {
     margin: 0;
@@ -45,8 +46,23 @@ header {
         color: white;
         background: #3b5998; }
   #lst-user #search {
-    position: absolute;
+    position: fixed;
     bottom: 0; }
     #lst-user #search input {
       width: 100%;
       margin: 0; }
+
+#lst-messages {
+  color: #000;
+  position: absolute;
+  left: 10%;
+  width: 90%;
+  overflow: auto; }
+  #lst-messages ul {
+    list-style: none;
+    margin: 0; }
+    #lst-messages ul li {
+      background: #ccc;
+      margin-top: 5px; }
+      #lst-messages ul li:first-child {
+        margin-top: 0px; }

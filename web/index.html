@@ -11,11 +11,11 @@
             <div>ChatAngular</div>
         </header>
 
-        <div ng-if="!isConnected" id="login-form">
+        <div ng-if="isConnected" id="login-form">
             <ng-include src="'template/login-form.html'"></ng-include>
         </div>
 
-        <div ng-if="isConnected">
+        <div ng-if="!isConnected">
             <div id="lst-user">
                 <ul ng-repeat="user in users | filter:search">
                     <li>{{ user.pseudo }}</li>
